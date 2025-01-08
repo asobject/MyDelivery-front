@@ -42,13 +42,12 @@
                                    class="form-control" 
                                    id="password" 
                                 formControlName="password" 
-                                [ngClass]="{'is-invalid': register.controls['password'].value!==register.controls['confirmPassword'].value||
-                                register.controls['password'].invalid && register.controls['password'].touched,
+                                [ngClass]="{'is-invalid':register.controls['password'].invalid && register.controls['password'].touched,
                                 'is-valid': register.controls['password'].valid && register.controls['password'].touched
                             }"
                             />
                             <div class="invalid-feedback">
-                                Некорректный пароль или пароли не совпадают</div>
+                                Некорректный пароль</div>
                         </div>
                         <div class="form-group">
                             <label for="confirmPassword">
