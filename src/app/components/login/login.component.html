@@ -3,7 +3,7 @@
         <div class="col-md-5">
             <div class="card">
                 <div class="card-body">
-                    <form class="needs-validation" [formGroup]="login" (ngSubmit)="submit()" novalidate>
+                    <form class="needs-validation" [formGroup]="loginForm" (ngSubmit)="submit()" novalidate>
                         <div class="form-group">
                             <label for="email" class="form-label">
                                 Электронная почта
@@ -13,8 +13,8 @@
                                    class="form-control" 
                                    id="email" 
                                 formControlName="email" 
-                                [ngClass]="{'is-invalid': login.controls['email'].invalid && login.controls['email'].touched,
-                                    'is-valid': login.controls['email'].valid && login.controls['email'].touched
+                                [ngClass]="{'is-invalid': loginForm.controls['email'].invalid && loginForm.controls['email'].touched,
+                                    'is-valid': loginForm.controls['email'].valid && loginForm.controls['email'].touched
                                 }"
                                 />
                                 <div class="invalid-feedback">
@@ -28,20 +28,20 @@
                                    class="form-control" 
                                    id="password" 
                                 formControlName="password"
-                                [ngClass]="{'is-invalid': login.controls['password'].invalid && login.controls['password'].touched,
-                                    'is-valid': login.controls['password'].valid && login.controls['password'].touched
+                                [ngClass]="{'is-invalid': loginForm.controls['password'].invalid && loginForm.controls['password'].touched,
+                                    'is-valid': loginForm.controls['password'].valid && loginForm.controls['password'].touched
                                 }"
                                 />
                                 <div class="invalid-feedback">
                                     Некорректный пароль</div>
                         </div>
-                        <button class="btn btn-primary mt-2" [disabled]="login.invalid">
+                        <button class="btn btn-primary mt-2" [disabled]="loginForm.invalid">
                             Войти
                         </button>
                     </form>
                     <p class="mt-3">
                         Нет аккаунта?
-                        <a href="/register" routerLink="register">Зарегистрировать</a>
+                        <a  routerLink="/register">Зарегистрировать</a>
                     </p>
                 </div>
             </div>

@@ -1,55 +1,59 @@
-
 <header class="p-3 text-bg-dark">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">      
-    
-      <a href="/home" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" routerLink="home">
-          <img src="/assets/delivery-icon.png" class="bi me-2" style="width: 40px; height:32px" alt="Home" title={{title}}> 
+
+      <!-- Логотип с навигацией на главную -->
+      <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" routerLink="/home">
+          <img src="/assets/delivery-icon.png" class="bi me-2" style="width: 40px; height:32px" alt="Home" title="{{title}}"> 
       </a>
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" routerLinkActive="active">
-          <li>
-            <a href="/#" class="nav-link px-2 text-white" routerLink="#">Наши пункты</a>
-          </li>
-          <li>
-            <a href="/#" class="nav-link px-2 text-white" routerLink="#">О нас</a>
-          </li>
-        </ul>
-        <div class="text-end">
-          <button type="button" class="btn btn-success me-2">
-            <a href="/#" class="nav-link" routerLink="#">Помощь</a>
-        </button>
-          @if(!this.isLoggedIn){
-              <button type="button" class="btn btn-outline-light me-2">
-                  <a href="/login" class="nav-link" routerLink="login">Вход</a>
-              </button>
-            }
+
+      <!-- Меню с навигацией -->
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" routerLinkActive="active">
+        <li>
+          <a class="nav-link px-2 text-white" routerLink="/home">Наши пункты</a>
+        </li>
+        <li>
+          <a class="nav-link px-2 text-white" routerLink="/about">О нас</a>
+        </li>
+      </ul>
+
+      <!-- Кнопка помощи -->
+      <div class="text-end">
+        <a class="btn btn-success me-2" routerLink="/help">Помощь</a>
+      </div>
+
+      <!-- Проверка состояния входа -->
+      <div *ngIf="!this.userService.isAuthenticated()">
+        <a class="btn btn-outline-light me-2" routerLink="/login">Вход</a>
+      </div>
+
+      <!-- Если пользователь авторизован, показываем выпадающее меню -->
+      <div *ngIf="this.userService.isAuthenticated()">
+        <div class="dropdown">
+          <button class="btn btn-outline-light me-2 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Profile
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-item" type="button">
+              <a class="nav-link" routerLink="/profile">Личный кабинет</a>
+            </button>
+            <button class="dropdown-item" type="button">
+              <a class="nav-link" routerLink="/history">Мои посылки</a>
+            </button>
+            <button class="dropdown-item" type="button">
+              <a class="nav-link" routerLink="/tickets">Мои обращения</a>
+            </button>
+            <button class="dropdown-item text-danger" type="button">
+              <a class="nav-link" (click)="logout()" >Выйти</a>
+            </button>
           </div>
-          @if(this.isLoggedIn){
-            <div class="dropdown">
-              <button class="btn btn-outline-light me-2 dropdown-toggle" type="button"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Profile
-              </button>
-              <div class="dropdown-menu ">
-                <button class="dropdown-item" type="button">
-                  <a href="/profile" class="nav-link" routerLink="profile">Личный кабинет</a>
-                </button>
-                <button class="dropdown-item" type="button">
-                  <a href="/history" class="nav-link" routerLink="history">Мои посылки</a>
-                </button>
-                <button class="dropdown-item" type="button">
-                  <a href="/#" class="nav-link" routerLink="#">Мои обращения</a>
-                </button>
-                <button class="dropdown-item text-danger" type="button">
-                  <a href="/logout" class="nav-link" routerLink="logout">Выйти</a>
-                </button>
-              </div>
-            </div>
-          }
-  
+        </div>
+      </div>
+
     </div>
   </div>
 </header>
-<body>
-  <router-outlet></router-outlet>
-</body>
 
+<main>
+  <router-outlet></router-outlet>
+</main>

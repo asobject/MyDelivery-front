@@ -3,7 +3,7 @@
         <div class="col-md-5">
             <div class="card">
                 <div class="card-body">
-                    <form class="needs-validation" [formGroup]="register" (ngSubmit)="submit()" novalidate>
+                    <form class="needs-validation" [formGroup]="registerForm" (ngSubmit)="submit()" novalidate>
                         <div class="form-group">
                             <label for="email">
                                 Имя
@@ -12,8 +12,8 @@
                                    class="form-control" 
                                    id="name" 
                                 formControlName="firstName"  
-                                [ngClass]="{'is-invalid': register.controls['firstName'].invalid && register.controls['firstName'].touched,
-                                'is-valid': register.controls['firstName'].valid && register.controls['firstName'].touched
+                                [ngClass]="{'is-invalid': registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched,
+                                'is-valid': registerForm.controls['firstName'].valid && registerForm.controls['firstName'].touched
                             }"
                             />
                             <div class="invalid-feedback">
@@ -27,8 +27,8 @@
                                    class="form-control" 
                                    id="email" 
                                    formControlName="email"
-                                   [ngClass]="{'is-invalid': register.controls['email'].invalid && register.controls['email'].touched,
-                                   'is-valid': register.controls['email'].valid && register.controls['email'].touched
+                                   [ngClass]="{'is-invalid': registerForm.controls['email'].invalid && registerForm.controls['email'].touched,
+                                   'is-valid': registerForm.controls['email'].valid && registerForm.controls['email'].touched
                                }"
                                />
                                <div class="invalid-feedback">
@@ -42,8 +42,8 @@
                                    class="form-control" 
                                    id="password" 
                                 formControlName="password" 
-                                [ngClass]="{'is-invalid':register.controls['password'].invalid && register.controls['password'].touched,
-                                'is-valid': register.controls['password'].valid && register.controls['password'].touched
+                                [ngClass]="{'is-invalid':registerForm.controls['password'].invalid && registerForm.controls['password'].touched,
+                                'is-valid': registerForm.controls['password'].valid && registerForm.controls['password'].touched
                             }"
                             />
                             <div class="invalid-feedback">
@@ -57,20 +57,20 @@
                                    class="form-control" 
                                    id="confirmPassword" 
                                    formControlName="confirmPassword"
-                                   [ngClass]="{'is-invalid': register.controls['password'].value!==register.controls['confirmPassword'].value
-                                    || register.controls['confirmPassword'].touched &&  register.controls['confirmPassword'].invalid,
-                                   'is-valid': register.controls['confirmPassword'].valid && register.controls['confirmPassword'].touched
+                                   [ngClass]="{'is-invalid': registerForm.controls['password'].value!==registerForm.controls['confirmPassword'].value
+                                    || registerForm.controls['confirmPassword'].touched &&  registerForm.controls['confirmPassword'].invalid,
+                                   'is-valid': registerForm.controls['confirmPassword'].valid && registerForm.controls['confirmPassword'].touched
                                }"
                                />
                                
                         </div>
-                        <button class="btn btn-primary mt-2" [disabled]="register.invalid">
+                        <button class="btn btn-primary mt-2" [disabled]="registerForm.invalid">
                             Зарегистрировать
                         </button>
                     </form>
                     <p class="mt-3">
                         Уже есть аккаунт?
-                        <a href="/login" routerLink="login">Войти</a>
+                        <a  routerLink="/login">Войти</a>
                     </p>
                 </div>
             </div>
